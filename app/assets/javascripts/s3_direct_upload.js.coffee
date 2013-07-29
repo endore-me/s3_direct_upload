@@ -53,7 +53,7 @@ $.fn.S3Uploader = (options) ->
             else
               forms_for_submit = [data]
           else
-            data.submit()
+            data.jqXHR = data.submit()
 
       start: (e) ->
         $uploadForm.trigger("s3_uploads_start", [e])
