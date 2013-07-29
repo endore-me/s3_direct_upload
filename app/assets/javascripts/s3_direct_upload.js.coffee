@@ -34,8 +34,7 @@ $.fn.S3Uploader = (options) ->
       false
 
   setUploadForm = ->
-    fupload = $uploadForm.fileupload
-    $uploadForm.data('fileupload', fupload)
+    $uploadForm.fileupload
 
       add: (e, data) ->
         file = data.files[0]
@@ -142,7 +141,8 @@ $.fn.S3Uploader = (options) ->
     # Save key for IE9 Fix
     $uploadForm.data("key", $uploadForm.find("input[name='key']").val())
 
-    setUploadForm()
+    form = setUploadForm()
+    $uploadForm.data('fileupload', form)
     this
 
   @path = (new_path) ->
