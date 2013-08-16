@@ -37,7 +37,7 @@ $.fn.S3Uploader = (options) ->
   setUploadForm = ->
     $uploadForm.fileupload
 
-      acceptFileTypes: accepted_files_regex
+      acceptFileTypes: settings.accepted_files_regex
 
       add: (e, data) ->
         file = data.files[0]
