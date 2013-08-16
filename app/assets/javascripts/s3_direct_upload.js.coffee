@@ -23,7 +23,6 @@ $.fn.S3Uploader = (options) ->
     progress_bar_target: null
     click_submit_target: null
     allow_multiple_files: true
-    accepted_files_regex: /(.+)/
 
   $.extend settings, options
 
@@ -36,8 +35,6 @@ $.fn.S3Uploader = (options) ->
 
   setUploadForm = ->
     $uploadForm.fileupload
-
-      acceptFileTypes: settings.accepted_files_regex
 
       add: (e, data) ->
         file = data.files[0]
@@ -100,10 +97,9 @@ $.fn.S3Uploader = (options) ->
         fileType = ""
         if "type" of @files[0]
           fileType = @files[0].type
-        if fileType != ""
-          data.push
-            name: "content-type"
-            value: fileType
+        data.push
+          name: "content-type"
+          value: fileType
 
         key = $uploadForm.data("key").replace('{timestamp}', new Date().getTime()).replace('{unique_id}', @files[0].unique_id)
 
