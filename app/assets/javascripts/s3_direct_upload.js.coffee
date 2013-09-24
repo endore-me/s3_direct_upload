@@ -38,7 +38,6 @@ $.fn.S3Uploader = (options) ->
 
       add: (e, data) ->
         file = data.files[0]
-        file.name = file.name.replace('+', '-')
         file.unique_id = Math.random().toString(36).substr(2,16)
 
         unless settings.before_add and not settings.before_add(file)
